@@ -8,10 +8,16 @@ from django.contrib.auth.models import User
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 # 创建标签表
 class Tag(models.Model):
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 # 创建文章表
@@ -30,3 +36,6 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # 标签 多对多
     tags = models.ManyToManyField(Tag, blank=True)
+
+    def __str__(self):
+        return self.titel
